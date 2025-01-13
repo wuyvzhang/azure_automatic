@@ -38,11 +38,14 @@ jobs:
   Terraform_Apply:
     runs-on: ubuntu-latest
 
+    needs: terraform_Plan
+
     env:
-      ARM_CLIENT_ID: "04684342-05fe-44a5-9c41-176278bf7fbd"
-      ARM_CLIENT_SECRET: ${{secrets.TF_ARM_CLIENT_SECRET}}
-      ARM_SUBSCRIPTION_ID: "177add63-2747-4d6d-a5e4-004dc63b04c6"
-      ARM_TENANT_ID: "a55b816c-e99d-4af2-b69c-60fb4f03bef5"
+      env:
+      AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+      AZURE_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
+      AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+      AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
 
     steps:
       - uses: actions/checkout@v2

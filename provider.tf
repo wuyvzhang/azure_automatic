@@ -3,7 +3,7 @@ provider "azurerm" {
 }
 
 terraform {
-  required_version = ">= 0.14"
+  required_version = ">=1.0"
 
   required_providers {
     azurerm = {
@@ -17,5 +17,12 @@ terraform {
       storage_account_name = "tfstate0113"
       container_name       = "tfstate"
       key                  = "tfstate"
+      subscription_id = "177add63-2747-4d6d-a5e4-004dc63b04c6"
     }
+  provider "azurerm" {
+    features = {}
+    use_oidc = true
+    subscription_id = "177add63-2747-4d6d-a5e4-004dc63b04c6"
+    skip_provider_registration = true
+  }
 }

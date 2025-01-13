@@ -1,28 +1,23 @@
-provider "azurerm" {
-  features = {}
-}
-
 terraform {
   required_version = ">=1.0"
-
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "~> 3.1.0"
+      version = "~>3.0"
+    }
+    random = {
+      source  = "hashicorp/random"
+      version = "~>3.0"
     }
   }
-
   backend "azurerm" {
-      resource_group_name  = "rg-tfstate"
-      storage_account_name = "tfstate0113"
-      container_name       = "tfstate"
-      key                  = "tfstate"
-      subscription_id = "177add63-2747-4d6d-a5e4-004dc63b04c6"
-    }
-  provider "azurerm" {
-    features = {}
-    use_oidc = true
-    subscription_id = "177add63-2747-4d6d-a5e4-004dc63b04c6"
-    skip_provider_registration = true
+    resource_group_name  = "rg-tfstate"
+    storage_account_name = "tfstate0113"
+    container_name       = "tfstate"
+    key                  = "tfstate"
+  }
+}
+provider "azurerm" {
+  features {
   }
 }
